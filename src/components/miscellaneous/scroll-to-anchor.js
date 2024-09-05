@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import BotsonicIcon from '@/components/svgs/botsonic-icon';
 import ChevronTopIcon from '@/components/svgs/chevron-top-icon';
 import MailIcon from '@/components/svgs/mail-icon';
 import ToggleTheme from '@/hooks/toggle-theme';
-import BotsonicIcon from '@/components/svgs/botsonic-icon';
 
 const ScrollToAnchor = ({ targetId = 'top', offset = 0, behavior = 'smooth' }) => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -35,16 +35,13 @@ const ScrollToAnchor = ({ targetId = 'top', offset = 0, behavior = 'smooth' }) =
 
 	return (
 		<>
-			<div className='flex flex-col gap-y-10 fixed bottom-14 left-5 z-50'>
+			<div className='flex flex-col gap-y-10 fixed xl:bottom-14 bottom-5 left-5 z-50'>
 				<div className='block xl:hidden'>
 					<ToggleTheme />
 				</div>
 			</div>
-			<div className='flex flex-col gap-y-10 fixed bottom-28 right-5 z-50'>
-				{/* Botsonic Chat Button */}
-				<BotsonicIcon />
-
-				{/* Other Buttons */}
+			<BotsonicIcon />
+			<div className='flex flex-col gap-y-10 fixed bottom-28 xl:right-5 right-4 z-50'>
 				<button className='w-14 h-14 flex items-center justify-center bg-blue-400 text-white rounded-full shadow-lg hover:bg-eduskill-dark transition-all duration-300'>
 					<MailIcon className='fill-white' />
 				</button>

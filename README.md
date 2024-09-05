@@ -1,0 +1,1 @@
+# eduskill-nextjs-frontend-app

@@ -140,7 +140,7 @@ function CoursesSlider() {
 							<SplideSlide key={course.id} className='pt-6 pb-4'>
 								<Link href={course.link} target='_blank' rel='noopener noreferrer'>
 									<div className='xl:w-[384px] w-full xl:h-fit h-fit px-6 pb-8 rounded-lg shadow-lg shadow-[#101828]/10 dark:shadow-gray-500 bg-white dark:bg-gray-800 flex flex-col gap-y-8'>
-										<Image src={`http://127.0.0.1:8000${course.thumbnail_url}`} alt={course.title} width={336} height={240} className='w-[336px] h-[240px] object-cover rounded-sm' />
+										<Image src={`http://dashboard.eduskill.id${course.thumbnail_url}`} alt={course.title} width={336} height={240} className='w-[336px] h-[240px] object-cover rounded-sm' />
 										<div className='flex flex-col gap-y-8 h-full justify-between'>
 											<div className='flex flex-col gap-y-3'>
 												<p className='text-sm text-eduskill-400 font-semibold xl:leading-5 leading-snug'>{course.category_id === 1 ? 'Design' : 'Other Category'}</p>

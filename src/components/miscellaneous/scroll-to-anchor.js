@@ -35,7 +35,7 @@ const ScrollToAnchor = ({ targetId = 'top', offset = 0, behavior = 'smooth' }) =
 
 	return (
 		<>
-			<div className='flex flex-col gap-y-10 fixed xl:bottom-14 bottom-5 left-5 z-50'>
+			<div className='flex flex-col gap-y-10 fixed xl:bottom-14 bottom-4 xl:left-5 left-4 z-50'>
 				<div className='block xl:hidden'>
 					<ToggleTheme />
 				</div>

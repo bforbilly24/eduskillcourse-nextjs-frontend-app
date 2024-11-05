@@ -1,6 +1,6 @@
 function CoursesSkeleton() {
 	return (
-		<div className='w-[384px] h-fit pt-6 px-6 pb-8 rounded-lg shadow-xl bg-white dark:bg-gray-800 flex flex-col gap-y-8 animate-pulse'>
+		<div className='w-[384px] h-fit pt-6 px-6 pb-8 rounded-lg shadow-xl bg-white dark:bg-gray-700 flex flex-col gap-y-8 animate-pulse'>
 			<div className='w-[336px] h-[240px] bg-gray-300 dark:bg-gray-700 rounded-sm'></div>
 
 			<div className='flex flex-col gap-y-8 h-full justify-between'>

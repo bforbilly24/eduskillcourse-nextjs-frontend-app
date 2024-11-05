@@ -7,6 +7,10 @@ import CategoriesSlider from '@/components/slders/categories-slider';
 import CoursesSlider from '@/components/slders/courses-slider';
 import { collaborations, svgs } from '@/utils/constants';
 
+export const metadata = {
+	title: 'Home | Eduskill',
+};
+
 export default function HomePage() {
 	return (
 		<>
@@ -32,7 +36,7 @@ export default function HomePage() {
 									<p className='xl:leading-[180%] leading-[140%] text-sm text-[#646464] xl:w-[30.438rem] w-fit dark:text-gray-300'>Eduskill Menyediakan Kelas Design, Web Development, Business Plan Yang Cocok Untuk Mahasiswa Maupun Pemula</p>
 								</div>
 								<div className='flex justify-start gap-x-7'>
-									<Link href='https://eduskill.mayar.link/pl/basic-web-development'>
+									<Link href='https://linktr.ee/eduskill'>
 										<button className='xl:px-7 px-8 py-4 font-semibold text-white bg-eduskill rounded-lg xl:text-lg text-base shadow-2xl shadow-[#101828]/5'>Daftar</button>
 									</Link>
 									<Link href='https://wa.me/6281553546308?text=Saya%20memiliki%20kendala,%20yaitu...'>

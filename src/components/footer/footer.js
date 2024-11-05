@@ -7,7 +7,7 @@ import EmailSubscriptionForm from '../forms/email-subscription-form.';
 function Footer() {
 	return (
 		<footer className='bg-white dark:bg-gray-950 w-full'>
-			<div className='bg-eduskill-600 mt-[5.25rem]'>
+			<div className='bg-eduskill-600 dark:bg-gray-800 mt-[5.25rem]'>
 				<div className='container mx-auto flex flex-col'>
 					<div className='w-full grid xl:grid-cols-eduskill-footer grid-cols-1 xl:gap-y-0 gap-y-10 justify-between pt-16 pb-12'>
 						<div className='flex flex-col gap-y-9'>

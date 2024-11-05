@@ -2,7 +2,7 @@ import { getServerstatus } from '@/actions/get-server-status';
 import { Section } from '@/components/section/section';
 
 export const metadata = {
-	title: 'Status',
+	title: 'Status | Eduskill',
 };
 
 export default async function StatusPage() {

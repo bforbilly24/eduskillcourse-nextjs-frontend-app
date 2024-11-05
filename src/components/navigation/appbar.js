@@ -17,7 +17,7 @@ function AppBar() {
 	};
 
 	return (
-		<nav className='fixed bottom-0 left-0 right-0 xl:hidden flex items-center justify-between bg-white dark:bg-gray-800 shadow-md px-6 py-3'>
+		<nav className='fixed bottom-0 left-0 right-0 xl:hidden flex items-center justify-between bg-white dark:bg-gray-700 shadow-md px-6 py-3'>
 			{/* Left Icons */}
 			<Link href='/explore'>
 				<button onClick={() => handleClick(0)} className={`flex flex-col items-center ${activeIndex === 0 ? 'text-eduskill' : 'text-gray-500 dark:text-gray-300'}`}>

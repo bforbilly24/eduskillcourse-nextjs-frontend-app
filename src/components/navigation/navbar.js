@@ -29,8 +29,8 @@ function Navbar() {
 
 				{/* Mobile: Hamburger Menu and Button */}
 				<div className='flex items-center xl:hidden gap-x-3'>
-					<Link href='https://eduskill.myr.id/pl/basic-web-development'>
-						<button className='text-white bg-eduskill px-4 py-[10px] h-10 w-[115px] text-sm font-semibold leading-5 rounded-lg shadow-2xl shadow-black/5 dark:shadow-gray-100/5 ml-4'>Daftar Kelas</button>
+					<Link href='https://eduskill.myr.id/portal'>
+						<button className='text-white bg-eduskill px-4 py-[10px] h-10 w-fit text-sm font-semibold leading-5 rounded-lg shadow-2xl shadow-black/5 dark:shadow-gray-100/5 ml-4'>Masuk Kelas</button>
 					</Link>
 					<button className='outline-none' onClick={toggleMenu}>
 						{isMenuOpen ? <CloseIcon className='fill-black dark:fill-gray-200' /> : <HamburgerIcon className='fill-black dark:fill-gray-200' />}
@@ -45,8 +45,8 @@ function Navbar() {
 						<p className={`text-base font-medium leading-6 ${pathname === item.slug ? 'font-bold text-eduskill' : 'text-[#101828] dark:text-gray-200 hover:text-eduskill-400'}`}>{item.name}</p>
 					</Link>
 				))}
-				<Link href='https://eduskill.myr.id/pl/basic-web-development'>
-					<button className='text-white bg-eduskill px-4 py-[10px] h-10 w-[115px] text-sm font-semibold leading-5 rounded-lg shadow-2xl shadow-black/5 dark:shadow-gray-100/5'>Daftar Kelas</button>
+				<Link href='https://eduskill.myr.id/portal'>
+					<button className='text-white bg-eduskill px-4 py-[10px] h-10 text-sm font-semibold leading-5 rounded-lg shadow-2xl shadow-black/5 dark:shadow-gray-100/5 capitalize w-fit'>Masuk Kelas</button>
 				</Link>
 				<ToggleTheme />
 			</div>

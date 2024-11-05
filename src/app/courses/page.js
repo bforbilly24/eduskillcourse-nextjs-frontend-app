@@ -2,7 +2,7 @@ import CoursesCard from '@/components/cards/courses-card.';
 import { Section } from '@/components/section/section';
 
 export const metadata = {
-	title: 'Courses',
+	title: 'Courses | Eduskill',
 };
 
 export default function CoursesPage() {

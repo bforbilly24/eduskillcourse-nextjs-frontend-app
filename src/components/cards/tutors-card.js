@@ -7,7 +7,7 @@ function TutorsCard() {
 	return (
 		<div className='grid xl:grid-cols-4 grid-cols-1 gap-6 p-6 w-full'>
 			{tutorsList.map((tutor, index) => (
-				<div key={index} className='xl:w-[17.25rem] w-[16] flex flex-col items-center justify-center bg-[#F9FAFB] dark:bg-gray-800 p-6 rounded-lg'>
+				<div key={index} className='xl:w-[17.25rem] w-[16] flex flex-col items-center justify-center bg-[#F9FAFB] dark:bg-gray-700 p-6 rounded-lg'>
 					<div className='flex flex-col items-center gap-y-5'>
 						<div className='rounded-full overflow-hidden'>
 							<Image src={tutor.image} width={80} height={80} alt={tutor.alt} className='w-20 h-20 object-cover' />

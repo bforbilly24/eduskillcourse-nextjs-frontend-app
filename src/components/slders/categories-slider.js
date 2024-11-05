@@ -59,7 +59,7 @@ const CategoriesSlider = () => {
 			>
 				{categoriesClass.map((item) => (
 					<SplideSlide key={item.id}>
-						<div className='w-full h-[15rem] xl:w-[24.375rem] xl:h-[15.188rem] group px-10 py-[1.875rem] bg-white dark:bg-gray-800 border-2 border-[#D8D8D8]/40 dark:border-gray-50/40 rounded-[0.75rem] hover:bg-eduskill dark:hover:bg-eduskill hover:border-eduskill-400/40'>
+						<div className='w-full h-[15rem] xl:w-[24.375rem] xl:h-[15.188rem] group px-10 py-[1.875rem] bg-white dark:bg-gray-700 border-2 border-[#D8D8D8]/40 dark:border-gray-50/40 rounded-[0.75rem] hover:bg-eduskill dark:hover:bg-eduskill hover:border-eduskill-400/40'>
 							<div className='flex flex-col gap-y-[1.375rem] w-full h-full justify-between'>
 								<div className='flex flex-col gap-y-[1.875rem] items-start justify-center'>
 									<div className='gap-x-5 flex items-center justify-start w-full'>

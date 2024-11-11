@@ -1,19 +1,13 @@
 'use server';
+import axios from 'axios';
 
 async function getServerstatus() {
-	const options = {
-		method: 'GET',
-		cache: 'no-store',
-	};
-
 	try {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/status`, options);
+		const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/status`, {
+			cache: 'no-store',
+		});
 
-		if (!res.ok) {
-			throw new Error('Failed to fetch server status');
-		}
-
-		const data = await res.json();
+		const data = res.data;
 
 		const status = data.status;
 		const cpuUsage = data.details.cpu_usage;
@@ -26,7 +20,7 @@ async function getServerstatus() {
 			cpuUsage,
 			memoryUsage,
 			diskFreeSpace,
-			diskTotalSpace
+			diskTotalSpace,
 		};
 	} catch (error) {
 		console.error('Error fetching server status:', error);

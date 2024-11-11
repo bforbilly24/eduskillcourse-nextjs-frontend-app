@@ -1,4 +1,4 @@
-'use server';
+'use server'
 
 import axios from 'axios';
 import { formatDuration } from '@/libs/transform-date';
@@ -6,20 +6,15 @@ import { formatDuration } from '@/libs/transform-date';
 async function getCourses(showAll = false, page = 1) {
 	try {
 		const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/course?page=${page}`);
-
-		// console.log('Full response:', response.data);
-
 		if (response?.data?.status === 'success') {
 			const paginationData = response.data.data;
-			// console.log('Pagination Data:', paginationData);
-
 			const rawData = Array.isArray(paginationData.data) ? paginationData.data : [];
 
 			const sortedData = showAll ? rawData : rawData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 3);
 
-			const data = {
+			return {
 				error: false,
-				isEmpty: sortedData.length === 0,
+				isEmpty: sortedData.length === 0, // Set isEmpty to true if no data
 				data: sortedData.map((course) => ({
 					id: course.id,
 					title: course.title,
@@ -42,16 +37,10 @@ async function getCourses(showAll = false, page = 1) {
 				prevPageUrl: paginationData.prev_page_url,
 				isLastPage: !paginationData.next_page_url || sortedData.length === 0,
 			};
-
-			// console.log('Extracted Data:', data);
-
-			return data;
 		} else {
-			// console.log('Error in response status:', response.data.status);
 			return { error: true, isEmpty: true, data: [] };
 		}
 	} catch (error) {
-		// console.error('Failed to fetch courses:', error);
 		return { error: true, isEmpty: true, data: [] };
 	}
 }

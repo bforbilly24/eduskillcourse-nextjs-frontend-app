@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getCourses } from '@/actions/get-courses';
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/shadcn/ui/pagination';
+import { Pagination, PaginationContent, PaginationItem,PaginationNext, PaginationPrevious } from '@/components/shadcn/ui/pagination';
 import CoursesSkeleton from '@/components/skeletons/courses-skeleton';
 import DurationIcon from '@/components/svgs/duration-icon';
 import LessonIcon from '@/components/svgs/lesson-icon';
@@ -86,7 +86,7 @@ function CoursesCard() {
 						<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-content-center justify-items-center gap-y-4 mx-auto w-full'>
 							{state.courses.map((course) => (
 								<Link key={course.id} href={course.link} target='_blank' rel='noopener noreferrer' className='sm:w-full lg:w-[384px] h-[560px] pt-0 px-0 pb-8 rounded-lg shadow-xl bg-white dark:bg-gray-800 relative group overflow-hidden block'>
-									<Image src={`http://127.0.0.1:8000${course.thumbnail_url}`} alt={course.title} width={384} height={240} className='w-full h-[240px] object-cover rounded-t-lg' />
+									<Image src={`http://dashboard.eduskill.id${course.thumbnail_url}`} alt={course.title} width={384} height={240} className='w-full h-[240px] object-cover rounded-t-lg' />
 									<div className='w-full h-[320px] group-hover:h-full bg-white dark:bg-gray-800 transition-transform duration-300 ease-in-out transform translate-y-0 group-hover:-translate-y-32 rounded-b-lg p-7'>
 										<div className='flex flex-col gap-y-4 h-full group-hover:h-[400px] justify-between'>
 											<div className='flex flex-col gap-y-3 items-start'>

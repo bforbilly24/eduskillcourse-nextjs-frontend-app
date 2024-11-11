@@ -6,7 +6,7 @@ const nextConfig = {
 			{
 				protocol: 'http',
 				hostname: 'dashboard.eduskill.id',
-				port: '',
+				port: '', 
 				pathname: '/storage/**',
 			},
 		],

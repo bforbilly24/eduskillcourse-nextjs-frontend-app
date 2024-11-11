@@ -4,13 +4,13 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { getCourses } from '@/actions/get-courses';
 import CoursesSkeleton from '@/components/skeletons/courses-skeleton';
 import DurationIcon from '@/components/svgs/duration-icon';
 import LessonIcon from '@/components/svgs/lesson-icon';
 import LevelIcon from '@/components/svgs/level-icon';
-import Link from 'next/link';
 
 function CoursesSlider() {
 	const [state, setState] = useState({
@@ -22,17 +22,20 @@ function CoursesSlider() {
 
 	const splideRef = useRef(null);
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const [page1, page2] = await Promise.all([getCourses(true, 1), getCourses(true, 2)]);
-				const allCourses = [...(page1?.data || []), ...(page2?.data || [])].sort((a, b) => b.id - a.id).slice(0, 6);
+	const fetchCourses = async () => {
+		setState((prevState) => ({ ...prevState, loading: true }));
+		const [page1, page2] = await Promise.all([getCourses(true, 1), getCourses(true, 2)]);
+		if (page1.error || page2.error) {
+			// If any of the pages encounter an error
+			setState((prevState) => ({ ...prevState, loading: false, error: true, courses: [] }));
+		} else {
+			const allCourses = [...(page1?.data || []), ...(page2?.data || [])].sort((a, b) => b.id - a.id).slice(0, 6);
+			setState({ courses: allCourses, loading: false, error: false, activeIndex: 0 });
+		}
+	};
 
-				setState({ courses: allCourses, loading: false, error: false, activeIndex: 0 });
-			} catch {
-				setState((prev) => ({ ...prev, error: true, loading: false }));
-			}
-		})();
+	useEffect(() => {
+		fetchCourses();
 	}, []);
 
 	// Update active index on swipe
@@ -129,7 +132,7 @@ function CoursesSlider() {
 						{state.courses.map((course) => (
 							<SplideSlide key={course.id} className='pt-6 pb-4'>
 								<Link href={course.link} target='_blank' rel='noopener noreferrer' className='sm:w-full lg:w-[384px] h-[560px] pt-0 px-0 pb-8 rounded-lg shadow-xl bg-white dark:bg-gray-800 relative group overflow-hidden block'>
-									<Image src={`http://127.0.0.1:8000${course.thumbnail_url}`} alt={course.title} width={384} height={240} className='w-full h-[240px] object-cover rounded-t-lg' />
+									<Image src={`http://dashboard.eduskill.id${course.thumbnail_url}`} alt={course.title} width={384} height={240} className='w-full h-[240px] object-cover rounded-t-lg' />
 									<div className='w-full h-[320px] group-hover:h-full bg-white dark:bg-gray-800 transition-transform duration-300 ease-in-out transform translate-y-0 group-hover:-translate-y-32 rounded-b-lg p-7'>
 										<div className='flex flex-col gap-y-4 h-full group-hover:h-[400px] justify-between'>
 											<div className='flex flex-col gap-y-3 items-start'>
@@ -193,18 +196,20 @@ function CoursesSlider() {
 			<div className='flex gap-x-3 items-center justify-center'>
 				{state.loading
 					? Array.from({ length: dotCount }).map((_, index) => <div key={index} className='w-3 h-3 bg-gray-200 dark:bg-gray-600 rounded-full animate-pulse'></div>)
-					: Array.from({ length: dotCount }).map((_, index) => (
-							<motion.div
-								key={index}
-								onClick={() => handleIndicatorClick(index)}
-								className={`cursor-pointer rounded-full ${state.activeIndex === index ? 'bg-eduskill w-12 h-3' : 'bg-[#D9D9D9] w-3 h-3'}`}
-								animate={{
-									width: state.activeIndex === index ? '3rem' : '0.75rem',
-									backgroundColor: state.activeIndex === index ? '#FF7B00' : '#D9D9D9',
-								}}
-								transition={{ duration: 0.3, ease: 'easeInOut' }}
-							/>
-						))}
+					: !state.error && state.courses.length > 0 // Show dots only if there is no error and courses are available
+						? Array.from({ length: dotCount }).map((_, index) => (
+								<motion.div
+									key={index}
+									onClick={() => handleIndicatorClick(index)}
+									className={`cursor-pointer rounded-full ${state.activeIndex === index ? 'bg-eduskill w-12 h-3' : 'bg-[#D9D9D9] w-3 h-3'}`}
+									animate={{
+										width: state.activeIndex === index ? '3rem' : '0.75rem',
+										backgroundColor: state.activeIndex === index ? '#FF7B00' : '#D9D9D9',
+									}}
+									transition={{ duration: 0.3, ease: 'easeInOut' }}
+								/>
+							))
+						: null}
 			</div>
 		</div>
 	);
